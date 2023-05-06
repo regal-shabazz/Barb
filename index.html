@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/icons/css/all.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <img
+          src="./assets/images/barb-logo.png"
+          alt="website logo"
+          class="logo"
+        />
+
+        <ul class="menu-list">
+          <li class="menu-list-items">salons</li>
+          <li class="menu-list-items">community</li>
+          <li class="menu-list-items">services</li>
+          <li class="menu-list-items">blog</li>
+          <li class="menu-list-items">find a barber</li>
+        </ul>
+
+        <span class="open-close-menu-icons">
+          <i class="fa-solid fa-xmark"></i>
+          <i class="fa-solid fa-bars"></i>
+        </span>
+      </nav>
+    </header>
+
+    <main>
+      <section class="slider-wrap">
+        <img
+          src="./assets/images/left-arrow-icon.png"
+          alt=""
+          class="arrow-icon left-arrow"
+        />
+
+        <div class="slide slide1">
+          <article class="slide-content slide-content1">
+            <h1>Connect with the Best in the Business</h1>
+            <p>Join our Barber Network Today</p>
+
+            <button>join now</button>
+          </article>
+        </div>
+
+        <div class="slide slide2">
+          <article class="slide-content slide-content2">
+            <h1>Get the Perfect Haircut Every Time</h1>
+            <p>Our Expert Barbers Will Transform Your Look</p>
+            <button>book now</button>
+          </article>
+        </div>
+
+        <div class="slide slide3">
+          <article class="slide-content slide-content3">
+            <h1>Relax and Unwind in Our Stylish Salons</h1>
+            <p>Experience the Ultimate Barber Shop Experience</p>
+            <button>find a salon</button>
+          </article>
+        </div>
+
+        <img
+          src="./assets/images/right-arrow-icon.png"
+          alt=""
+          class="arrow-icon right-arrow"
+        />
+
+        <div class="indicators">
+          <span class="indicator"></span>
+          <span class="indicator"></span>
+          <span class="indicator"></span>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const slides = document.querySelectorAll(".slide");
+      const leftArrow = document.querySelector(".left-arrow");
+      const rightArrow = document.querySelector(".right-arrow");
+      const indicator = document.querySelectorAll(".indicator");
+      let current = 0;
+
+      function reset() {
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+          indicator[i].classList.remove("active");
+        }
+      }
+
+      function startSlide() {
+        reset();
+        slides[0].style.display = "block";
+        indicator[0].classList.toggle("active");
+      }
+
+      //show previous slide
+      function slideLeft() {
+        reset();
+        slides[current - 1].style.display = "block";
+        indicator[current - 1].classList.toggle("active");
+        current--;
+      }
+
+      //show next slide
+      function slideRight() {
+        reset();
+
+        if (current === slides.length - 1) {
+          current = 0;
+        } else {
+          current++;
+        }
+        slides[current].style.display = "block";
+        indicator[current].classList.toggle("active");
+      }
+
+      leftArrow.addEventListener("click", () => {
+        if (current === 0) {
+          current = slides.length;
+        }
+
+        slideLeft();
+      });
+
+      rightArrow.addEventListener("click", () => {
+        if (current === slides.length - 1) {
+          current = -1;
+        }
+
+        slideRight();
+      });
+
+      const slideTimer = setInterval(slideRight, 5000);
+
+   
+      startSlide();
+    </script>
+  </body>
+</html>
