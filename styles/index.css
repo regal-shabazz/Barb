@@ -115,6 +115,7 @@ nav {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 90%;
 }
 
 .slide1 {
@@ -238,6 +239,10 @@ button:hover {
   .arrow-icon {
     display: block;
     margin: 0 4rem;
+  }
+
+  .slide-content {
+    width: initial;
   }
 
   .slide-content h1 {

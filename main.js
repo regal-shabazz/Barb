@@ -19,29 +19,14 @@ closeMenuBtn.addEventListener('click', () => {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// homepage background slider
 const slides = document.querySelectorAll(".slide");
 const leftArrow = document.querySelector(".left-arrow");
 const rightArrow = document.querySelector(".right-arrow");
 const indicator = document.querySelectorAll(".indicator");
 let current = 0;
 
+// removes styles from current slide when left/arrow is clicked
 function reset() {
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
@@ -49,6 +34,8 @@ function reset() {
   }
 }
 
+
+// shows the first homepage background
 function startSlide() {
   reset();
   slides[0].style.display = "block";
@@ -77,6 +64,7 @@ function slideRight() {
 }
 
 leftArrow.addEventListener("click", () => {
+  // if current slide is the first slide, set current to equal the total number of slides, which is 3
   if (current === 0) {
     current = slides.length;
   }
@@ -84,6 +72,7 @@ leftArrow.addEventListener("click", () => {
   slideLeft();
 });
 
+// if current slide is the last slide, set the current to equal -1
 rightArrow.addEventListener("click", () => {
   if (current === slides.length - 1) {
     current = -1;
@@ -93,7 +82,7 @@ rightArrow.addEventListener("click", () => {
 });
 
 
-
+// this functions for mobile view when users touch the screen to change the slides
 const sliderWrap = document.querySelector('.slider-wrap');
 let touchStartX = 0;
 let touchEndX = 0;
@@ -121,7 +110,8 @@ function handleGesture() {
   }
 }
 
-
-
+// this sets the homepage to change background every 7s
 const slideTimer = setInterval(slideRight, 7000);
+
+// this inits the slide process
 startSlide();
