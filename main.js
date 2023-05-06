@@ -111,7 +111,7 @@ function handleGesture() {
 }
 
 // this sets the homepage to change background every 7s
-const slideTimer = setInterval(slideRight, 7000);
+const slideTimer = setInterval(slideRight, 5000);
 
 // this inits the slide process
 startSlide();
